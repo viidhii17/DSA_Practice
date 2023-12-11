@@ -39,6 +39,6 @@ public class GridUniqueWaysDP {
     }
 
     public static void main(String[] args) {
-        System.out.println(countWays(3,7));
+        System.out.println(countWays(3,3));
     }
 }

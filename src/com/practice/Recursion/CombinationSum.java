@@ -48,6 +48,37 @@ public class CombinationSum {
         return ans;
     }
 
+    //Combination Sum 3
+
+     static void help(int i , int k, int sumTillNow, int n, List<Integer> subSet, List<List<Integer>> ans){
+        if(sumTillNow>n)
+            return;
+        if(k==0)
+        {
+            if(sumTillNow == n){
+                ans.add(new ArrayList<>(subSet));
+            }
+            return;
+        }
+        if(i==10) return;
+
+        sumTillNow+=i;
+        subSet.add(i);
+
+        help(i+1,k-1,sumTillNow,n,subSet,ans);
+
+        sumTillNow-= i;
+        subSet.remove(subSet.size()-1);
+
+        help(i+1,k,sumTillNow,n,subSet,ans);
+    }
+    public static  List<List<Integer>> combinationSum3(int k, int n){
+        List<Integer> subSet = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+        help(1,k,0,n,subSet,ans);
+        return ans;
+    }
+
 
     public static void main(String[] args) {
       // int[] candidates = {2,3,6,7};
@@ -55,7 +86,8 @@ public class CombinationSum {
        int candidates [] = { 10,1,2,7,6,1,5};
        List <List<Integer>> comb = combinationSum2(candidates,8);
         //  System.out.println(combinationSum(candidates,7));
-        System.out.println(comb.toString().replace(","," "));
+     //   System.out.println(comb.toString().replace(","," "));
+        System.out.println(combinationSum3(3,7));
 
     }
 }
